@@ -6,12 +6,26 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class QuizActivity extends AppCompatActivity {
 
     private Button _trueButton;
     private Button _falseButton;
+    private Button _nextButton;
+
+    private TextView _questionTextView;
+
+    private Question[] _questions = new Question[] {
+            new Question(R.string.question_oceans, true),
+            new Question(R.string.question_mideast, false),
+            new Question(R.string.question_africa, false),
+            new Question(R.string.question_americas, true),
+            new Question(R.string.question_asia, true)
+    };
+
+    private int _currentQuestionIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +47,18 @@ public class QuizActivity extends AppCompatActivity {
                 Toast.makeText(QuizActivity.this, R.string.correct_toast, Toast.LENGTH_SHORT).show();
             }
         });
+
+        _nextButton = (Button)findViewById(R.id.next_button);
+        _nextButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                _currentQuestionIndex = (_currentQuestionIndex  + 1 ) % _questions.length;
+                updateQuestion();
+            }
+        });
+
+        _questionTextView = (TextView)findViewById(R.id.question_text_view);
+        updateQuestion();
     }
 
     @Override
@@ -56,4 +82,10 @@ public class QuizActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private void updateQuestion() {
+        int question = _questions[_currentQuestionIndex].getTextResourceId();
+        _questionTextView.setText(question);
+    }
+
 }
