@@ -7,6 +7,7 @@
     <string name="true_button">True</string>
     <string name="false_button">False</string>
     <string name="next_button">Next</string>
+    <string name="prev_button">Prev</string>
 
     <!-- Toast Strings -->
     <string name="correct_toast">Correct!</string>
