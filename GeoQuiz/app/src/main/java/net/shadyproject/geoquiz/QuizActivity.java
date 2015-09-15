@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,8 +14,8 @@ public class QuizActivity extends AppCompatActivity {
 
     private Button _trueButton;
     private Button _falseButton;
-    private Button _nextButton;
-    private Button _prevButton;
+    private ImageButton _nextButton;
+    private ImageButton _prevButton;
 
     private TextView _questionTextView;
 
@@ -49,7 +50,7 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-        _nextButton = (Button)findViewById(R.id.next_button);
+        _nextButton = (ImageButton)findViewById(R.id.next_button);
         _nextButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -57,7 +58,7 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-        _prevButton = (Button)findViewById(R.id.prev_button);
+        _prevButton = (ImageButton)findViewById(R.id.prev_button);
         _prevButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
